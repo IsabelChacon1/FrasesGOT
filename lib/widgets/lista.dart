@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frases_got/screens/frases_random.dart';
 
 class Lista extends StatelessWidget {
   const Lista({super.key});
@@ -9,30 +10,31 @@ class Lista extends StatelessWidget {
     return ListView(
       children: [
         Container(
-          child: const Text(
-            'Frase random',
-            style: TextStyle(
-                fontSize: 70,
-                fontWeight: FontWeight.w200,
-                color: Color.fromARGB(255, 252, 254, 240)),
-            textAlign: TextAlign.center,
+          child: ListTile(
+            title: Text(
+              'Frase random',
+              style: TextStyle(
+                  fontSize: 70,
+                  fontWeight: FontWeight.w200,
+                  color: Color.fromARGB(255, 252, 254, 240)),
+              textAlign: TextAlign.center,
+            ),
+            onTap: () {
+              //cuando oprimes el boton
+              Navigator.push(
+                //Abre una pagina Nueva
+                context,
+                MaterialPageRoute(
+                    //ruta horizontal(es la q abre rutas en flutter)
+                    //constructor, funcion anonima que toma el context(estado actual) clase
+                    builder: (context) => const FrasesRandom()),
+              );
+            },
           ),
           color: const Color.fromARGB(255, 51, 28, 14),
           width: double.infinity,
           height: size.height * 0.30,
           alignment: Alignment.center,
-          // onTap: () {
-          //   //cuando oprimes el boton
-          //   Navigator.push(
-          //     //Abre una pagina Nueva
-          //     context,
-          //     MaterialPageRoute(
-          //         //ruta horizontal(es la q abre rutas en flutter)
-          //         //constructor, funcion anonima que toma el context(estado actual) clase
-          //         builder: (context) =>
-          //             const SingleChildScrollViewExampleWidget()),
-          //   );
-          // },
         ),
         Container(
           child: const Text(
