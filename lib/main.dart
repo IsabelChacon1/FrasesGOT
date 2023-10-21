@@ -23,8 +23,9 @@ class MyApp extends StatelessWidget {
         routes: {
           'home': (_) => Inicio(),
           'Frase': (_) => FrasesRandom(),
-          'Escoge': (_) =>
-              Escoger(), //para escoger casas o presonajes y luego escoger personajes de la casa
+          'EscogeCasa': (_) => Escoger(),
+          'EscogePers': (_) => Escoger(),
+          //para escoger casas o presonajes y luego escoger personajes de la casa
         });
   }
 }
