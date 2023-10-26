@@ -39,7 +39,8 @@ class Lista extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              Navigator.pushNamed(context, 'EscogeCasa', arguments: '');
+              Navigator.pushNamed(context, 'EscogeCasa',
+                  arguments: 'EscogeCasa');
             },
           ),
           color: const Color.fromARGB(255, 103, 51, 30),
@@ -58,7 +59,8 @@ class Lista extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             onTap: () {
-              Navigator.pushNamed(context, 'EscogePers', arguments: '');
+              Navigator.pushNamed(context, 'EscogePers',
+                  arguments: 'EscogePersonaje');
             },
           ),
           color: const Color.fromARGB(255, 185, 84, 12),
