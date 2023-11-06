@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+//https://api.gameofthronesquotes.xyz/v1/characters
 class Character {
   String name;
   String slug;

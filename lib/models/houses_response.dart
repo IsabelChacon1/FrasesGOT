@@ -1,4 +1,5 @@
 import 'dart:convert';
+//https://api.gameofthronesquotes.xyz/v1/houses
 
 class HousesResponse {
   String slug;

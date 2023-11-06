@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+//https://api.gameofthronesquotes.xyz/v1/random
 class Random {
   String sentence;
   Character character;
