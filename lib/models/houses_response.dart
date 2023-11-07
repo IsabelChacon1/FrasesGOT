@@ -24,11 +24,11 @@ class HousesResponse {
             List<Member>.from(json["members"].map((x) => Member.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "slug": slug,
-        "name": name,
-        "members": List<dynamic>.from(members.map((x) => x.toJson())),
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "slug": slug,
+  //       "name": name,
+  //       "members": List<dynamic>.from(members.map((x) => x.toJson())),
+  //     };
 }
 
 class Member {
@@ -49,8 +49,8 @@ class Member {
         slug: json["slug"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "slug": slug,
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "name": name,
+  //       "slug": slug,
+  //     };
 }
