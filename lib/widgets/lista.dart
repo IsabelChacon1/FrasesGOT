@@ -12,8 +12,12 @@ class Lista extends StatelessWidget {
     return ListView(
       children: [
         Container(
+          color: const Color.fromARGB(255, 51, 28, 14),
+          width: double.infinity,
+          height: size.height * 0.30,
+          alignment: Alignment.center,
           child: ListTile(
-            title: Text(
+            title: const Text(
               'Frase random',
               style: TextStyle(
                   fontSize: 70,
@@ -25,14 +29,14 @@ class Lista extends StatelessWidget {
               Navigator.pushNamed(context, 'Frase', arguments: '');
             },
           ),
-          color: const Color.fromARGB(255, 51, 28, 14),
-          width: double.infinity,
-          height: size.height * 0.30,
-          alignment: Alignment.center,
         ),
         Container(
+          color: const Color.fromARGB(255, 103, 51, 30),
+          width: double.infinity,
+          height: size.height * 0.29,
+          alignment: Alignment.center,
           child: ListTile(
-            title: Text(
+            title: const Text(
               'Casas',
               style: TextStyle(
                   fontSize: 70,
@@ -45,14 +49,14 @@ class Lista extends StatelessWidget {
                   arguments: 'EscogeCasa');
             },
           ),
-          color: const Color.fromARGB(255, 103, 51, 30),
-          width: double.infinity,
-          height: size.height * 0.29,
-          alignment: Alignment.center,
         ),
         Container(
+          color: const Color.fromARGB(255, 185, 84, 12),
+          width: double.infinity,
+          height: size.height * 0.30,
+          alignment: Alignment.center,
           child: ListTile(
-            title: Text(
+            title: const Text(
               'Personajes',
               style: TextStyle(
                   fontSize: 70,
@@ -65,10 +69,6 @@ class Lista extends StatelessWidget {
                   arguments: 'EscogePersonaje');
             },
           ),
-          color: const Color.fromARGB(255, 185, 84, 12),
-          width: double.infinity,
-          height: size.height * 0.30,
-          alignment: Alignment.center,
         ),
       ],
     );

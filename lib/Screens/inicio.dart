@@ -21,9 +21,9 @@ class Inicio extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         )),
-        backgroundColor: Color.fromARGB(255, 195, 141, 95),
+        backgroundColor: const Color.fromARGB(255, 195, 141, 95),
       ),
-      body: Lista(),
+      body: const Lista(),
     );
   }
 }
