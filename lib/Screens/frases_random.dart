@@ -7,12 +7,17 @@ class FrasesRandom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fraseProvider = Provider.of<FrasesProvider>(context);
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          // actions: [
-          //   IconButton(onPressed: () {}, icon: const Icon(Icons.search_outlined)),
-          // ],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  fraseProvider.getFraseRandom();
+                },
+                icon: const Icon(Icons.ramen_dining)),
+          ],
           title: const Center(
               child: Text(
             'Frase random',
@@ -42,6 +47,7 @@ class _FraseRandom extends StatelessWidget {
     final fraseProvider = Provider.of<FrasesProvider>(context);
 
     final size = MediaQuery.of(context).size;
+
     return Center(
       child: Container(
         width: size.width * 0.80,
