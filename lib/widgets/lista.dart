@@ -20,10 +20,12 @@ class Lista extends StatelessWidget {
             title: const Text(
               'Frase random',
               style: TextStyle(
-                  fontSize: 70,
-                  fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 252, 254, 240)),
+                fontSize: 70,
+                fontWeight: FontWeight.w200,
+                color: Color.fromARGB(255, 252, 254, 240),
+              ),
               textAlign: TextAlign.center,
+              //icon: Icon(Icons.casino),
             ),
             onTap: () {
               Navigator.pushNamed(context, 'Frase', arguments: '');

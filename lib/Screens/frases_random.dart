@@ -13,10 +13,28 @@ class FrasesRandom extends StatelessWidget {
           elevation: 0,
           actions: [
             IconButton(
-                onPressed: () {
-                  fraseProvider.getFraseRandom();
-                },
-                icon: const Icon(Icons.ramen_dining)),
+              focusColor: Colors.black,
+              onPressed: () {
+                fraseProvider.getFraseRandom();
+              },
+              icon: const Icon(
+                Icons.auto_awesome,
+                //Icons.castle,
+                //Icons.fort,
+                size: 30,
+              ),
+            ),
+            // IconButton(
+            //   icon: const Icon(Icons.favorite_border),
+            //   onPressed: () {
+            //     Agregar la frase a favoritas
+            //   },
+            // )
+            // IconButton(
+            //     onPressed: () {
+            //       traducir la frase
+            //     },
+            //     icon: const Icon(Icons.g_translate_sharp))
           ],
           title: const Center(
               child: Text(
@@ -24,6 +42,7 @@ class FrasesRandom extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 252, 254, 240),
+              fontSize: 25,
             ),
             textAlign: TextAlign.center,
           )),
