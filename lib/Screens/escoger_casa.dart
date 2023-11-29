@@ -38,7 +38,7 @@ class Escoger_Casa extends StatelessWidget {
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: Colors.blueGrey,
+              tileColor: const Color.fromARGB(255, 188, 219, 235),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -53,12 +53,12 @@ class Escoger_Casa extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 153, 120, 21),
+              tileColor: Color.fromARGB(255, 145, 117, 33),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -77,7 +77,7 @@ class Escoger_Casa extends StatelessWidget {
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 145, 137, 114),
+              tileColor: Color.fromARGB(255, 192, 175, 125),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -87,7 +87,7 @@ class Escoger_Casa extends StatelessWidget {
             ),
             ListTile(
               title: const Text(
-                'House Targaryen of King´s Landing',
+                "House Targaryen of King's Landing",
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
@@ -96,7 +96,7 @@ class Escoger_Casa extends StatelessWidget {
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 7, 185, 255),
+              tileColor: Color.fromARGB(255, 187, 187, 187),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -110,12 +110,12 @@ class Escoger_Casa extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 255, 7, 201),
+              tileColor: Color.fromARGB(255, 65, 65, 65),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -134,7 +134,7 @@ class Escoger_Casa extends StatelessWidget {
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: Color.fromARGB(255, 7, 197, 255),
+              tileColor: Color.fromARGB(255, 239, 173, 255),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -153,7 +153,7 @@ class Escoger_Casa extends StatelessWidget {
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 7, 164, 255),
+              tileColor: Color.fromARGB(255, 174, 162, 243),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -167,12 +167,12 @@ class Escoger_Casa extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: Colors.pink,
+              tileColor: const Color.fromARGB(255, 0, 0, 0),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -186,12 +186,12 @@ class Escoger_Casa extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: const Color.fromARGB(255, 7, 156, 255),
+              tileColor: Color.fromARGB(255, 7, 53, 83),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:
@@ -205,12 +205,12 @@ class Escoger_Casa extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
                 //icon: Icon(Icons.casino),
               ),
-              tileColor: Color.fromARGB(255, 7, 255, 81),
+              tileColor: Color.fromARGB(255, 22, 70, 36),
               onTap: () {
                 // Navigator.pushNamed(context, '',
                 //     arguments:

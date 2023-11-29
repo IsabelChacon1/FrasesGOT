@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frases_got/providers/frases_provider.dart';
+import 'package:provider/provider.dart';
 //import 'package:frases_got/screens/frases_random.dart';
 
 class Lista extends StatelessWidget {
@@ -7,7 +9,7 @@ class Lista extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //agregamos una variable
-
+    final fraseProvider = Provider.of<FrasesProvider>(context);
     final size = MediaQuery.of(context).size;
     return ListView(
       children: [
@@ -67,8 +69,10 @@ class Lista extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             onTap: () {
+              fraseProvider.getPersonaje();
               Navigator.pushNamed(context, 'EscogePers',
-                  arguments: 'EscogePersonaje');
+                  arguments: fraseProvider.personajes);
+              print(fraseProvider.personajes);
             },
           ),
         ),
