@@ -54,9 +54,6 @@ class FrasesProvider extends ChangeNotifier {
       final List<dynamic> data = json.decode(response.body);
       personajes = data.map((item) => Character.fromJson(item)).toList();
     }
-    //TODO pasar el resultado a una lista y desplegar la lista en la pantalla de personajes y que de ahí consulte sus frases
-    //le notificamos a los widgets que estan escuchando que se cambió la data por lo tanto se tiene que redibujar
-    notifyListeners(); //Actualiza todo
-    //print(frasesRandom.sentence.characters); //
+    notifyListeners(); 
   }
 }

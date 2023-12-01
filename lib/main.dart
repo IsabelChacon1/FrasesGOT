@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         routes: {
           'home': (_) => const Inicio(),
           'Frase': (_) => const FrasesRandom(),
-          'EscogeCasa': (_) => Escoger_Casa(),
+          'EscogeCasa': (_) => Escoger_Casa(casitas: frasesProv.casas_GOT),
           'EscogePers': (_) =>
               Escoger_Personaje(personajes: frasesProv.personajes),
           //para escoger casas o presonajes y luego escoger personajes de la casa

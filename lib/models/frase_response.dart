@@ -53,12 +53,12 @@ class Character {
 
 class House {
   String name;
-  String? slug;
+  String slug;
   List<Member>? members;
 
   House({
     required this.name,
-    this.slug,
+    required this.slug,
     this.members,
   });
 
