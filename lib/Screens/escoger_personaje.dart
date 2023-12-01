@@ -16,9 +16,10 @@ class Escoger_Personaje extends StatelessWidget {
       body: personajes.isNotEmpty
           ? ListView.builder(
               itemCount: personajes.length,
-              itemBuilder: (_, int index) {
+              itemBuilder: (context, index) {
+                final item = personajes[index];
                 return ListTile(
-                  title: Text('Item ${index + 1}'),
+                  title: Text(item.name),
                 );
               },
             )
@@ -26,3 +27,29 @@ class Escoger_Personaje extends StatelessWidget {
     );
   }
 }
+
+// class ListViewMain extends StatelessWidget {
+//   final List<MonstersResponse> monster;
+
+//   const ListViewMain({super.key, required this.monster});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView.builder(
+//         itemCount: monster.length,
+//         itemBuilder: (context, index) {
+//           final item = monster[index];
+//           if (item.type == monstersResponseTypeValues.map['large']) {
+//             return ListTile(
+//               title: Text(item.name),
+//               onTap: null,
+//             );
+//           } else {
+//             return Container();
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }

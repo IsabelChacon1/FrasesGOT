@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/providers/frases_provider.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:frases_got/Screens/escoger_personaje.dart';
-import 'package:frases_got/screens/inicio.dart';
-import 'package:frases_got/screens/escoger_casa.dart';
-import 'package:frases_got/screens/frases_random.dart';
+import 'package:frases_got/Screens/screens.dart';
 
 void main() {
   runApp(const AppState());
 }
+
+// async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   final keyApplicationId = 'ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd';
+//   final keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
+//   final keyParseServerUrl = 'https://parseapi.back4app.com';
+
+//   await Parse().initialize(keyApplicationId, keyParseServerUrl,
+//       clientKey: keyClientKey, autoSendSessionId: true);
+
+//   var firstObject = ParseObject('FirstClass')
+//     ..set(
+//         'message', 'Hey ! First message from Flutter. Parse is now connected');
+//   await firstObject.save();
+
+//   print('done');
+
+//
 
 class AppState extends StatelessWidget {
   const AppState({super.key});
@@ -46,7 +62,7 @@ class MyApp extends StatelessWidget {
         routes: {
           'home': (_) => const Inicio(),
           'Frase': (_) => const FrasesRandom(),
-          'EscogeCasa': (_) => const Escoger_Casa(),
+          'EscogeCasa': (_) => Escoger_Casa(),
           'EscogePers': (_) =>
               Escoger_Personaje(personajes: frasesProv.personajes),
           //para escoger casas o presonajes y luego escoger personajes de la casa

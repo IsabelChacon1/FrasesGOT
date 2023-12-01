@@ -9,7 +9,7 @@ class FrasesProvider extends ChangeNotifier {
   String casas = '';
   String personaje = '';
   String fraseRandom = '';
-  //List<House> casas_GOT = []; //Lista con las casas
+  List<House> casas_GOT = []; //Lista con las casas
   List<Character> personajes = []; //lista de personajes
 
   //Map<String, dynamic> fraseRandom = {}; //frases random
@@ -17,9 +17,9 @@ class FrasesProvider extends ChangeNotifier {
 
   FrasesProvider() {
     getFraseRandom();
-    //getCasas();
+    getCasas();
     //getMoviesCast();
-    //getPersonaje();
+    getPersonaje();
   }
 
   getFraseRandom() async {
@@ -37,28 +37,23 @@ class FrasesProvider extends ChangeNotifier {
   }
 
   getCasas() async {
-    // //aquí se llena la frase random
-    // var url = Uri.https(_baseUrl, '/v1/houses', {});
-    // final response = await http.get(url);
-    // final List<dynamic> decodeData = json.decode(response.body);
-
-    // final Casas = House.fromRawJson(response.body);
-    // casas = Casas.name;
-    // //TODO pasar el resultado a una lista y desplegar la lista en la pantalla de casas y que de ahí consulte los miembros de la casa y sus frases
-    // //casas_GOT = Casas;
-    // //le notificamos a los widgets que estan escuchando que se cambió la data por lo tanto se tiene que redibujar
-    // notifyListeners(); //Actualiza todo
-    // //print(frasesRandom.sentence.characters); //
+    var url = Uri.https(_baseUrl, '/v1/houses', {});
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      casas_GOT = data.map((item) => House.fromJson(item)).toList();
+    }
+    notifyListeners();
   }
 
   getPersonaje() async {
     //aquí se llena la frase random
     var url = Uri.https(_baseUrl, '/v1/characters', {});
     final response = await http.get(url);
-    final Map<String, dynamic> decodeData = json.decode(response.body)[0];
-    var Personaje = Character.fromJson(response.headers);
-    personajes = Personaje.name as List<Character>;
-
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      personajes = data.map((item) => Character.fromJson(item)).toList();
+    }
     //TODO pasar el resultado a una lista y desplegar la lista en la pantalla de personajes y que de ahí consulte sus frases
     //le notificamos a los widgets que estan escuchando que se cambió la data por lo tanto se tiene que redibujar
     notifyListeners(); //Actualiza todo
