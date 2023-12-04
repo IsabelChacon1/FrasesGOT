@@ -38,6 +38,7 @@ dependencies:
   http: ^0.13.0
   translator: ^0.1.7
   parse_server_sdk_flutter: ^7.0.0
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,9 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:frases_got/Screens/screens.dart';
 
+import 'providers/login_form_provider.dart';
+import 'services/auth_services.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final keyApplicationId = 'ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd';
@@ -32,7 +35,9 @@ class AppState extends StatelessWidget {
           //avisa que hay un provider
           create: (_) => FrasesProvider(),
           lazy: false,
-        )
+        ),
+        ChangeNotifierProvider(create: (context) => AuthService()),
+        ChangeNotifierProvider(create: (context) => LoginF_Provider()),
       ],
       child: const MyApp(),
     );
@@ -52,9 +57,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: primaryColor,
         ),
-        initialRoute: 'home',
+        initialRoute: 'checking',
         routes: {
-          'home': (_) => const Inicio(),
+          'login': (_) => LoginPage(),
+          'register': (_) => RegistroPage(),
+          'checking': (_) => CheckAuthScreen(),
+          'home': (_) => const PrincipalScr(),
           'Frase': (_) => const FrasesRandom(),
           'EscogeCasa': (_) => Escoger_Casa(casitas: frasesProv.casas_GOT),
           'EscogePers': (_) =>
