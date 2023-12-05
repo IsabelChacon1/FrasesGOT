@@ -31,7 +31,7 @@ class _RegistroPage extends StatelessWidget {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: DecoratedBox(
           decoration:
-              const BoxDecoration(color: Color.fromARGB(255, 96, 108, 93)),
+              const BoxDecoration(color: Color.fromARGB(255, 156, 85, 24)),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -40,7 +40,7 @@ class _RegistroPage extends StatelessWidget {
               children: [
                 Container(
                   width: size.width * 0.80,
-                  height: size.height * 0.13,
+                  height: size.height * 0.16,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -52,22 +52,22 @@ class _RegistroPage extends StatelessWidget {
                 //   height: size.height * 0.05,
                 //   alignment: Alignment.center,
                 // ),
-                TextFormField(
-                  controller: _nickController,
-                  decoration: const InputDecoration(
-                    labelText: 'Usuario',
-                    labelStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 255, 244, 244),
-                    ),
-                  ),
-                  validator: (value) {
-                    return (value != null && value.length > 3)
-                        ? null
-                        : 'El nombre debe tener minimo 3 caracteres';
-                  },
-                ),
+                // TextFormField(
+                //   controller: _nickController,
+                //   decoration: const InputDecoration(
+                //     labelText: 'Usuario',
+                //     labelStyle: TextStyle(
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.w500,
+                //       color: Color.fromARGB(255, 255, 244, 244),
+                //     ),
+                //   ),
+                //   validator: (value) {
+                //     return (value != null && value.length > 3)
+                //         ? null
+                //         : 'El nombre debe tener minimo 3 caracteres';
+                //   },
+                // ),
                 const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _emailController,

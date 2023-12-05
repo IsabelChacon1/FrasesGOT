@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import '../providers/login_form_provider.dart';
 import '../services/services.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
+  get loginForm => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +27,16 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size; //variable
     final loginForm = Provider.of<LoginF_Provider>(context);
+    final keyApplicationId = 'ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd';
+    final keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
+    final keyParseServerUrl = 'https://parseapi.back4app.com';
     return Center(
       child: Form(
         key: loginForm.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: DecoratedBox(
           decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 96, 108, 93)
+              color: Color.fromARGB(255, 156, 85, 24)
               // image: DecorationImage(
               //     image: AssetImage('assets/GOT_Poster.jpg'), fit: BoxFit.fill),
               ),
@@ -130,6 +136,15 @@ class _LoginForm extends StatelessWidget {
                               loginForm.email, loginForm.password);
                           if (errorMessage == null) {
                             Navigator.pushReplacementNamed(context, 'home');
+                            //todo guarda el correo
+                            await Parse().initialize(
+                                keyApplicationId, keyParseServerUrl,
+                                clientKey: keyClientKey,
+                                autoSendSessionId: true);
+                            var firstObject = ParseObject('Login')
+                              ..set('email', '${loginForm.email}');
+                            await firstObject.save();
+                            print('Correo Guardado');
                           } else {
                             print(errorMessage);
                             NotificationsService.showSnackbar(errorMessage);
@@ -138,23 +153,12 @@ class _LoginForm extends StatelessWidget {
                         },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 255, 244, 244)),
+                        const Color.fromARGB(255, 255, 244, 244)),
                   ),
                   child: Container(
-                      //   Text(
-                      //   'Iniciar sesión',
-                      //   style: TextStyle(
-                      //     fontSize: 25,
-                      //     fontWeight: FontWeight.w500,
-                      //     color: Color.fromARGB(255, 96, 108, 93),
-                      //   ),
-
-                      // )
-                      // padding:
-                      //     EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                       child: Text(
                     loginForm.isLoading ? 'Espere' : 'Ingresar',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
                       color: Color.fromARGB(255, 96, 108, 93),
@@ -166,7 +170,7 @@ class _LoginForm extends StatelessWidget {
                     //botón para ir a registrarte
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(255, 255, 244, 244)),
+                          const Color.fromARGB(255, 255, 244, 244)),
                     ),
                     onPressed: () {
                       // Navegar a la pantalla de registro

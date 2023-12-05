@@ -10,43 +10,54 @@ class PrincipalScr extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        backgroundColor: const Color.fromARGB(115, 255, 255, 255),
+          child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 90, 63, 17),
+              Color.fromARGB(255, 156, 85, 24),
+              Color.fromARGB(255, 239, 150, 45),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
+            Container(
+              width: double.infinity,
+              height: 200,
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/GOT_Logo.png'),
-                      fit: BoxFit.contain),
-                  color: Colors.black),
-              child: Text(
-                'Holi',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-              ),
+                      fit: BoxFit.contain)),
+              child: const Text(""),
             ),
-            ListTile(
+            const ListTile(
+              leading: Icon(
+                Icons.people,
+                color: Color.fromARGB(255, 250, 244, 244),
+              ),
               title: Text(
                 "Bienvenido Usuario",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 250, 244, 244),
                 ),
               ),
             ),
             ListTile(
+              leading: const Icon(
+                Icons.output,
+                color: Color.fromARGB(255, 250, 244, 244),
+              ),
               title: const Text(
                 'Cerrar sesión',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 250, 244, 244),
                 ),
               ),
               onTap: () {
@@ -56,24 +67,34 @@ class PrincipalScr extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      )),
       appBar: AppBar(
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
         elevation: 0,
-        // actions: [
-        //   IconButton(onPressed: () {}, icon: const Icon(Icons.search_outlined)),
-        // ],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
+              },
+              icon: const Icon(
+                Icons.favorite,
+                color: Color.fromARGB(255, 250, 244, 244),
+              )),
+        ],
         title: const Center(
             child: Text(
           'Frases de Game Of Thrones',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 252, 254, 240),
+            color: Color.fromARGB(255, 250, 244, 244),
           ),
           textAlign: TextAlign.center,
         )),
-        backgroundColor: const Color.fromARGB(255, 195, 141, 95),
+        backgroundColor: const Color.fromARGB(255, 239, 150, 45),
       ),
-      body: Center(
+      backgroundColor: const Color.fromARGB(255, 156, 85, 24),
+      body: const Center(
         child: Lista(),
       ),
     );

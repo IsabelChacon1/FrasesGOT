@@ -11,72 +11,111 @@ class Lista extends StatelessWidget {
     //agregamos una variable
     final fraseProvider = Provider.of<FrasesProvider>(context);
     final size = MediaQuery.of(context).size;
-    return ListView(
-      children: [
-        Container(
-          color: const Color.fromARGB(255, 51, 28, 14),
-          width: double.infinity,
-          height: size.height * 0.30,
-          alignment: Alignment.center,
-          child: ListTile(
-            title: const Text(
-              'Frase random',
-              style: TextStyle(
-                fontSize: 70,
-                fontWeight: FontWeight.w200,
-                color: Color.fromARGB(255, 252, 254, 240),
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            width: size.width * 0.90,
+            height: size.height * 0.20,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/GOT_Logo.png'),
+                    fit: BoxFit.contain)),
+          ),
+          SizedBox(height: 50.0),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.12,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Color.fromARGB(255, 239, 150, 45),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
+              ],
+            ),
+            child: ListTile(
+              title: const Text(
+                'Frase random',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.w400,
+                  color: Color.fromARGB(255, 250, 244, 244),
+                ),
+                textAlign: TextAlign.center,
+                //icon: Icon(Icons.casino),
               ),
-              textAlign: TextAlign.center,
-              //icon: Icon(Icons.casino),
+              onTap: () {
+                Navigator.pushNamed(context, 'Frase', arguments: '');
+              },
             ),
-            onTap: () {
-              Navigator.pushNamed(context, 'Frase', arguments: '');
-            },
           ),
-        ),
-        Container(
-          color: const Color.fromARGB(255, 103, 51, 30),
-          width: double.infinity,
-          height: size.height * 0.29,
-          alignment: Alignment.center,
-          child: ListTile(
-            title: const Text(
-              'Casas',
-              style: TextStyle(
-                  fontSize: 70,
-                  fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 252, 254, 240)),
-              textAlign: TextAlign.center,
+          SizedBox(height: 30.0),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.12,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color.fromARGB(255, 239, 150, 45),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
+              ],
             ),
-            onTap: () {
-              Navigator.pushNamed(context, 'EscogeCasa',
-                  arguments: 'EscogeCasa');
-            },
-          ),
-        ),
-        Container(
-          color: const Color.fromARGB(255, 185, 84, 12),
-          width: double.infinity,
-          height: size.height * 0.30,
-          alignment: Alignment.center,
-          child: ListTile(
-            title: const Text(
-              'Personajes',
-              style: TextStyle(
-                  fontSize: 70,
-                  fontWeight: FontWeight.w200,
-                  color: Color.fromARGB(255, 252, 254, 240)),
-              textAlign: TextAlign.center,
+            child: ListTile(
+              title: const Text(
+                'Casas',
+                style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 250, 244, 244)),
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'EscogeCasa',
+                    arguments: 'EscogeCasa');
+              },
             ),
-            onTap: () {
-              fraseProvider.getPersonaje();
-              Navigator.pushNamed(context, 'EscogePers',
-                  arguments: fraseProvider.personajes);
-              print(fraseProvider.personajes);
-            },
           ),
-        ),
-      ],
+          SizedBox(height: 30.0),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.12,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color.fromARGB(255, 239, 150, 45),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
+              ],
+            ),
+            child: ListTile(
+              title: const Text(
+                'Personajes',
+                style: TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.w400,
+                  color: Color.fromARGB(255, 250, 244, 244),
+                ),
+                textAlign: TextAlign.center,
+              ), //rgb(116, 142, 99)
+              onTap: () {
+                fraseProvider.getPersonaje();
+                Navigator.pushNamed(context, 'EscogePers',
+                    arguments: fraseProvider.personajes);
+                print(fraseProvider.personajes);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
