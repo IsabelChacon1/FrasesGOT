@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frases_got/main.dart';
+import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:frases_got/services/auth_services.dart';
 import 'package:frases_got/widgets/lista.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +10,8 @@ class PrincipalScr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final frasesFavs = Provider.of<LoginF_Provider>(context);
+    String elMail = correoF.toString();
     return Scaffold(
       drawer: Drawer(
           child: Container(
@@ -34,13 +38,24 @@ class PrincipalScr extends StatelessWidget {
               child: const Text(""),
             ),
             const ListTile(
-              leading: Icon(
+              title: Text(
+                "Bienvenid@",
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 250, 244, 244),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
                 Icons.people,
                 color: Color.fromARGB(255, 250, 244, 244),
               ),
               title: Text(
-                "Bienvenido Usuario",
-                style: TextStyle(
+                elMail,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
                   color: Color.fromARGB(255, 250, 244, 244),
@@ -61,6 +76,7 @@ class PrincipalScr extends StatelessWidget {
                 ),
               ),
               onTap: () {
+                //debería preguntar si quieres salir
                 Provider.of<AuthService>(context, listen: false).logout();
                 Navigator.pushReplacementNamed(context, 'login');
               },
@@ -76,6 +92,9 @@ class PrincipalScr extends StatelessWidget {
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
+                frasesFavs.getMessagesFromEmail();
+                print('$correoF ');
+                print('Frases encontradas: ${frasesFavs.frase}');
               },
               icon: const Icon(
                 Icons.favorite,

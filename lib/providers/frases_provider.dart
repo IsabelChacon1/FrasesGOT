@@ -7,7 +7,8 @@ class FrasesProvider extends ChangeNotifier {
   String _baseUrl = 'api.gameofthronesquotes.xyz';
 
   String casas = '';
-  String personaje = '';
+  String personajeSlug = '';
+  String frasePers = '';
   String fraseRandom = '';
   List<House> casas_GOT = []; //Lista con las casas
   List<Character> personajes = []; //lista de personajes
@@ -20,6 +21,7 @@ class FrasesProvider extends ChangeNotifier {
     getCasas();
     //getMoviesCast();
     getPersonaje();
+    getFrasePersonaje(personajeSlug);
   }
 
   getFraseRandom() async {
@@ -54,6 +56,20 @@ class FrasesProvider extends ChangeNotifier {
       final List<dynamic> data = json.decode(response.body);
       personajes = data.map((item) => Character.fromJson(item)).toList();
     }
-    notifyListeners(); 
+    notifyListeners();
+  }
+
+  getFrasePersonaje(personajeSlug) async {
+    //https://api.gameofthronesquotes.xyz/v1/author/sansa
+    var url = Uri.https(_baseUrl, '/v1/author/$personajeSlug', {});
+    final response = await http.get(url);
+    final frasRand = RandomFrase.fromRawJson(response.body);
+    final frase = frasRand.sentence;
+    final autor = frasRand.character.name;
+    frasePers = '"$frase" -$autor';
+    //fraseRandom = {frasRand.sentence, frasRand.character}
+    //le notificamos a los widgets que estan escuchando que se cambió la data por lo tanto se tiene que redibujar
+    notifyListeners(); //Actualiza todo
+    //print(frasesRandom.sentence.characters); //
   }
 }

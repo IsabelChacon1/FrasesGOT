@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
-import 'package:frases_got/providers/frases_provider.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
+import '../providers/frases_provider.dart';
 
-class FrasesRandom extends StatelessWidget {
-  FrasesRandom({super.key});
+class FrasesxPersonaje extends StatelessWidget {
+  final String slugPersonaje;
+  const FrasesxPersonaje({super.key, required this.slugPersonaje});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class FrasesRandom extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                fraseProvider.getFraseRandom();
+                fraseProvider.getFrasePersonaje(slugPersonaje);
               },
               icon: const Icon(
                 Icons.auto_awesome,
@@ -29,7 +30,7 @@ class FrasesRandom extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.favorite_rounded),
               onPressed: () async {
-                frasesita = fraseProvider.fraseRandom;
+                frasesita = fraseProvider.frasePers;
 
                 print("Agregar la frase ' $frasesita ' a favoritas");
                 //todo guardar el texto del contenedor
@@ -46,9 +47,9 @@ class FrasesRandom extends StatelessWidget {
               },
             )
           ],
-          title: const Center(
+          title: Center(
               child: Text(
-            'Frase random',
+            'Frase de: $slugPersonaje',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 250, 244, 244),
@@ -96,7 +97,7 @@ class _FraseRandom extends StatelessWidget {
           ),
         ),
         child: Text(
-          fraseProvider.fraseRandom, //frase
+          fraseProvider.frasePers, //frase
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 30,

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/models/frase_response.dart';
+import 'package:frases_got/providers/frases_provider.dart';
+import 'package:frases_got/widgets/card_swiper.dart';
+import 'package:frases_got/widgets/cards.dart';
+import 'package:provider/provider.dart';
 
 class Escoger_Personaje extends StatelessWidget {
   List<Character> personajes;
@@ -7,6 +11,8 @@ class Escoger_Personaje extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fraseProvider = Provider.of<FrasesProvider>(context);
+    String slugPers;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 156, 85, 24),
       appBar: AppBar(
@@ -32,6 +38,15 @@ class Escoger_Personaje extends StatelessWidget {
                 return InkWell(
                     onTap: () {
                       print('Botón presionado');
+                      print(personajes[index].slug);
+                      slugPers = personajes[index].slug.toString();
+                      fraseProvider.getFrasePersonaje(slugPers);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => FrasesxPersonaje(
+                                    slugPersonaje: slugPers,
+                                  )));
                     },
                     child: ListTile(
                       leading: Icon(
@@ -50,32 +65,7 @@ class Escoger_Personaje extends StatelessWidget {
               },
             )
           : Center(child: Text('No se que pasa')),
+      //CardSwiper(personajesGot: personajes)
     );
   }
 }
-
-// class ListViewMain extends StatelessWidget {
-//   final List<MonstersResponse> monster;
-
-//   const ListViewMain({super.key, required this.monster});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: ListView.builder(
-//         itemCount: monster.length,
-//         itemBuilder: (context, index) {
-//           final item = monster[index];
-//           if (item.type == monstersResponseTypeValues.map['large']) {
-//             return ListTile(
-//               title: Text(item.name),
-//               onTap: null,
-//             );
-//           } else {
-//             return Container();
-//           }
-//         },
-//       ),
-//     );
-//   }
-// }

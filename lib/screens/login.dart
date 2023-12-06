@@ -137,14 +137,14 @@ class _LoginForm extends StatelessWidget {
                           if (errorMessage == null) {
                             Navigator.pushReplacementNamed(context, 'home');
                             //todo guarda el correo
-                            await Parse().initialize(
-                                keyApplicationId, keyParseServerUrl,
-                                clientKey: keyClientKey,
-                                autoSendSessionId: true);
-                            var firstObject = ParseObject('Login')
-                              ..set('email', '${loginForm.email}');
-                            await firstObject.save();
-                            print('Correo Guardado');
+                            // await Parse().initialize(
+                            //     keyApplicationId, keyParseServerUrl,
+                            //     clientKey: keyClientKey,
+                            //     autoSendSessionId: true);
+                            // var firstObject = ParseObject('Login')
+                            //   ..set('email', '${loginForm.email}');
+                            // await firstObject.save();
+                            // print('Correo Guardado');
                           } else {
                             print(errorMessage);
                             NotificationsService.showSnackbar(errorMessage);
