@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import '../providers/login_form_provider.dart';
 import '../services/services.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ChangeNotifierProvider(
-            create: (_) => LoginF_Provider(), child: _LoginForm()),
-      ),
+      body: ChangeNotifierProvider(
+          create: (_) => LoginF_Provider(), child: _LoginForm()),
     );
   }
 }
@@ -27,9 +24,6 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size; //variable
     final loginForm = Provider.of<LoginF_Provider>(context);
-    final keyApplicationId = 'ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd';
-    final keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
-    final keyParseServerUrl = 'https://parseapi.back4app.com';
     return Center(
       child: Form(
         key: loginForm.formKey,
@@ -109,18 +103,18 @@ class _LoginForm extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 16.0),
-                TextButton(
-                  //botón por si olvidaste tu contraseña
-                  onPressed: () {
-                    print('Chale que mal, esta parte está en progreso');
-                  },
-                  child: const Text(
-                    '¿Olvidaste tu contraseña?',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 255, 244, 244),
-                    ),
-                  ),
-                ), //botón por si olvidaste tu contraseña
+                // TextButton(
+                //botón por si olvidaste tu contraseña
+                //   onPressed: () {
+                //     print('Chale que mal, esta parte está en progreso');
+                //   },
+                //   child: const Text(
+                //     '¿Olvidaste tu contraseña?',
+                //     style: TextStyle(
+                //       color: Color.fromARGB(255, 255, 244, 244),
+                //     ),
+                //   ),
+                // ), //botón por si olvidaste tu contraseña
                 ElevatedButton(
                   //botón para iniciar sesion
 
@@ -136,15 +130,6 @@ class _LoginForm extends StatelessWidget {
                               loginForm.email, loginForm.password);
                           if (errorMessage == null) {
                             Navigator.pushReplacementNamed(context, 'home');
-                            //todo guarda el correo
-                            // await Parse().initialize(
-                            //     keyApplicationId, keyParseServerUrl,
-                            //     clientKey: keyClientKey,
-                            //     autoSendSessionId: true);
-                            // var firstObject = ParseObject('Login')
-                            //   ..set('email', '${loginForm.email}');
-                            // await firstObject.save();
-                            // print('Correo Guardado');
                           } else {
                             print(errorMessage);
                             NotificationsService.showSnackbar(errorMessage);

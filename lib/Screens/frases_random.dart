@@ -13,7 +13,8 @@ class FrasesRandom extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+          iconTheme:
+              const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
           elevation: 0,
           actions: [
             IconButton(
@@ -32,8 +33,9 @@ class FrasesRandom extends StatelessWidget {
                 frasesita = fraseProvider.fraseRandom;
 
                 print("Agregar la frase ' $frasesita ' a favoritas");
-                //todo guardar el texto del contenedor
 
+                //todo validar si no está ya la frase guardada con el correo
+                //todo pintar el corazón de otro color cuando la frase esté guardada
                 await Parse().initialize(keyApplicationId, keyParseServerUrl,
                     clientKey: keyClientKey, autoSendSessionId: true);
                 print('Correo $correoF obtenido');
@@ -58,7 +60,7 @@ class FrasesRandom extends StatelessWidget {
           )),
           backgroundColor: const Color.fromARGB(255, 239, 150, 45),
         ),
-        body: DecoratedBox(
+        body: const DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/Frases_Wallpaper.jpg'),
@@ -79,13 +81,13 @@ class _FraseRandom extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Center(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         width: size.width * 0.90,
         height: size.height * 0.40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
               Color.fromARGB(209, 90, 63, 17),
               Color.fromARGB(221, 156, 86, 24),

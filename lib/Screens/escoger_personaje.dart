@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/models/frase_response.dart';
 import 'package:frases_got/providers/frases_provider.dart';
-import 'package:frases_got/widgets/card_swiper.dart';
 import 'package:frases_got/widgets/cards.dart';
 import 'package:provider/provider.dart';
 
@@ -13,10 +12,12 @@ class Escoger_Personaje extends StatelessWidget {
   Widget build(BuildContext context) {
     final fraseProvider = Provider.of<FrasesProvider>(context);
     String slugPers;
+    //todo mostrar una foto del personaje en la lista
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 156, 85, 24),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
         elevation: 0,
         title: const Center(
             child: Text(
@@ -49,13 +50,13 @@ class Escoger_Personaje extends StatelessWidget {
                                   )));
                     },
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.star,
                         color: Color.fromARGB(255, 250, 244, 244),
                       ),
                       title: Text(
                         item.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.w300,
                           color: Color.fromARGB(255, 250, 244, 244),
                           fontSize: 25,
@@ -64,7 +65,7 @@ class Escoger_Personaje extends StatelessWidget {
                     ));
               },
             )
-          : Center(child: Text('No se que pasa')),
+          : const Center(child: Text('No se que pasa')),
       //CardSwiper(personajesGot: personajes)
     );
   }

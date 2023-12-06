@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frases_got/providers/frases_provider.dart';
 import 'package:frases_got/providers/perosnajes_prov.dart';
 import 'package:frases_got/screens/frases_favs.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:frases_got/Screens/screens.dart';
 import 'providers/login_form_provider.dart';
@@ -12,7 +13,15 @@ String frasesita = '';
 const keyApplicationId = "ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd";
 const keyParseServerUrl = "https://parseapi.back4app.com";
 const keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
+List<String?> frases = [];
 void main() async {
+  await Parse().initialize(
+    keyApplicationId,
+    keyParseServerUrl,
+    clientKey: keyClientKey,
+    autoSendSessionId: true,
+  );
+  frases.clear();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const AppState());
 }
@@ -64,7 +73,6 @@ class MyApp extends StatelessWidget {
           'EscogePers': (_) =>
               Escoger_Personaje(personajes: frasesProv.personajes),
           'FrasesFavs': (_) => FrasesFavsScr(),
-          //para escoger casas o presonajes y luego escoger personajes de la casa
         });
   }
 }

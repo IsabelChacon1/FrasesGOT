@@ -76,7 +76,8 @@ class PrincipalScr extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                //debería preguntar si quieres salir
+                //TODO preguntar si quieres salir
+                frases.clear();
                 Provider.of<AuthService>(context, listen: false).logout();
                 Navigator.pushReplacementNamed(context, 'login');
               },
@@ -90,11 +91,12 @@ class PrincipalScr extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
+              //todo agregarlo a la lista de los botones de pantalla
               onPressed: () {
                 Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
-                frasesFavs.getMessagesFromEmail();
+                frasesFavs.performQuery();
                 print('$correoF ');
-                print('Frases encontradas: ${frasesFavs.frase}');
+                print('Frases encontradas: $frases');
               },
               icon: const Icon(
                 Icons.favorite,

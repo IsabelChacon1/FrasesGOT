@@ -11,10 +11,11 @@ class FrasesxPersonaje extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fraseProvider = Provider.of<FrasesProvider>(context);
-
+    //todo verificar si la frase está en favoritos y si si pintar el corazon
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+          iconTheme:
+              const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
           elevation: 0,
           actions: [
             IconButton(
@@ -33,8 +34,6 @@ class FrasesxPersonaje extends StatelessWidget {
                 frasesita = fraseProvider.frasePers;
 
                 print("Agregar la frase ' $frasesita ' a favoritas");
-                //todo guardar el texto del contenedor
-
                 await Parse().initialize(keyApplicationId, keyParseServerUrl,
                     clientKey: keyClientKey, autoSendSessionId: true);
                 print('Correo $correoF obtenido');
@@ -50,7 +49,7 @@ class FrasesxPersonaje extends StatelessWidget {
           title: Center(
               child: Text(
             'Frase de: $slugPersonaje',
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 250, 244, 244),
               fontSize: 25,
@@ -59,7 +58,7 @@ class FrasesxPersonaje extends StatelessWidget {
           )),
           backgroundColor: const Color.fromARGB(255, 239, 150, 45),
         ),
-        body: DecoratedBox(
+        body: const DecoratedBox(
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/Frases_Wallpaper.jpg'),
@@ -80,13 +79,13 @@ class _FraseRandom extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Center(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         width: size.width * 0.90,
         height: size.height * 0.40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
               Color.fromARGB(209, 90, 63, 17),
               Color.fromARGB(221, 156, 86, 24),
