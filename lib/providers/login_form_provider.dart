@@ -60,10 +60,12 @@ class LoginF_Provider extends ChangeNotifier {
       // Manejo de errores
       print("Error retrieving data");
     }
+    notifyListeners();
   }
 
   ////todo crear metodo para que verifique si ya está guardada la frase
   void versSiyaEsFav() async {
+    print('Estamos viendo si está la frase y mi condición es $myCondition');
     await Parse().initialize(
       keyApplicationId,
       keyParseServerUrl,
@@ -97,21 +99,23 @@ class LoginF_Provider extends ChangeNotifier {
       }
     } else {
       // Manejo de errores
-      myCondition = false;
+      // myCondition = false; //no ta la frase
       print("Error retrieving data");
       print(apiResponse.error);
       print(queryBuilder.queries);
       //return false;
     }
+    notifyListeners();
   }
 
   //todo crear metodo para borrar las frases
   void eliminarFrase() async {
     try {
       //versSiyaEsFav(); // Ejecuta la consulta
-      print('Lo estoy intentando');
-      print(myCondition);
+      print(
+          'Estamos viendo si está la frase pa borrarla y mi condición es $myCondition');
       if (myCondition == true) {
+        //si está la frase has todo eso
         // ParseObject frasePaBorrar = frasesita as ParseObject;
         //ParseObject phraseToDelete = apiResponse.results!.first;
         List<ParseObject> phraseToDelete =
@@ -127,7 +131,7 @@ class LoginF_Provider extends ChangeNotifier {
             if (deleteResponse.success) {
               print('Frase eliminada: $frasesita');
               print('La frase fue eliminada correctamente. $frasesita');
-              myCondition = false; //frase estaba y ya no
+              myCondition = false; //frase estaba y ya no está
             } else {
               //   // Manejo de errores de eliminación
               print(
@@ -138,6 +142,7 @@ class LoginF_Provider extends ChangeNotifier {
           // ParseObject phraseToDelete = apiResponse.results!.first;
         }
       } else {
+        //si no ta la frase deme un error
         // Manejo de errores de consulta
         print('Error de consulta: ${apiResponse.error?.message}, ');
         print(apiResponse.toString());
@@ -145,5 +150,6 @@ class LoginF_Provider extends ChangeNotifier {
     } on Exception catch (e) {
       print('Error al realizar la consulta: $e');
     }
+    notifyListeners();
   }
 }

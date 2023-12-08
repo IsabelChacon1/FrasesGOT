@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
+import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
 import '../providers/frases_provider.dart';
@@ -11,61 +12,90 @@ class FrasesxPersonaje extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fraseProvider = Provider.of<FrasesProvider>(context);
-    //todo verificar si la frase está en favoritos y si si pintar el corazon
     return Scaffold(
-        appBar: AppBar(
-          iconTheme:
-              const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
-          elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: () {
-                fraseProvider.getFrasePersonaje(slugPersonaje);
-              },
-              icon: const Icon(
-                Icons.auto_awesome,
-                size: 30,
-                color: Color.fromARGB(255, 250, 244, 244),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.favorite_rounded),
-              onPressed: () async {
-                frasesita = fraseProvider.frasePers;
-
-                print("Agregar la frase ' $frasesita ' a favoritas");
-                await Parse().initialize(keyApplicationId, keyParseServerUrl,
-                    clientKey: keyClientKey, autoSendSessionId: true);
-                print('Correo $correoF obtenido');
-                var firstObject = ParseObject('frasesFavs')
-                  ..set('frase', frasesita)
-                  ..set('email', correoF);
-                await firstObject.save();
-                print('Frase guardada');
-                //LoginF_Provider().agregarFavorito;
-              },
-            )
-          ],
-          title: Center(
-              child: Text(
-            'Frase de: $slugPersonaje',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+      appBar: AppBar(
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              fraseProvider.getFrasePersonaje(slugPersonaje);
+            },
+            icon: const Icon(
+              Icons.auto_awesome,
+              size: 30,
               color: Color.fromARGB(255, 250, 244, 244),
-              fontSize: 25,
             ),
-            textAlign: TextAlign.center,
-          )),
-          backgroundColor: const Color.fromARGB(255, 239, 150, 45),
-        ),
-        body: const DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/Frases_Wallpaper.jpg'),
-                fit: BoxFit.cover),
           ),
-          child: _FraseRandom(),
-        ));
+        ],
+        title: Center(
+            child: Text(
+          'Frase de: $slugPersonaje',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 250, 244, 244),
+            fontSize: 25,
+          ),
+          textAlign: TextAlign.center,
+        )),
+        backgroundColor: const Color.fromARGB(255, 239, 150, 45),
+      ),
+      body: const DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/Frases_Wallpaper.jpg'),
+              fit: BoxFit.cover),
+        ),
+        child: _FraseRandom(),
+      ),
+      floatingActionButton: Botoncito(),
+    );
+  }
+}
+
+class Botoncito extends StatefulWidget {
+  const Botoncito({super.key});
+
+  @override
+  State<Botoncito> createState() => _BotoncitoState();
+}
+
+class _BotoncitoState extends State<Botoncito> {
+  @override
+  Widget build(BuildContext context) {
+    final frasesFavs = Provider.of<LoginF_Provider>(context);
+    final fraseProvider = Provider.of<FrasesProvider>(context);
+    frasesita = fraseProvider.fraseRandom;
+    frasesFavs.versSiyaEsFav();
+    return FloatingActionButton(
+      onPressed: () {
+        frasesita = fraseProvider.frasePers;
+        setState(() {
+          //myCondition = !myCondition;
+          //frasesFavs.versSiyaEsFav();
+        });
+        //print("Agregar la frase ' $frasesita ' a favoritas");
+        if (myCondition == false) {
+          //no está guardada entonces guardala
+          frasesFavs.guardarFrase();
+        } else {
+          //si está guardada entonces borrala
+          frasesFavs.eliminarFrase();
+        }
+
+        //myCondition ? frasesFavs.guardarFrase() : frasesFavs.eliminarFrase();
+        //LoginF_Provider().agregarFavorito;
+      },
+      //focusColor: myCondition ? Colors.green : Colors.red, // Cambiar el color según la condición
+      backgroundColor: const Color.fromARGB(255, 239, 150, 45),
+
+      child: Icon(
+        myCondition ? Icons.heart_broken_rounded : Icons.favorite_rounded,
+        color: const Color.fromARGB(255, 255, 255, 255),
+        size: 40,
+      ),
+    );
   }
 }
 

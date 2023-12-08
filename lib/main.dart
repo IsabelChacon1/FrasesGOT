@@ -14,12 +14,10 @@ const keyApplicationId = "ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd";
 const keyParseServerUrl = "https://parseapi.back4app.com";
 const keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
 List<String?> frases = [];
-List<String?> frasesId = [];
-bool myCondition = false; //si la frase no está en favs
+bool myCondition = false; //vamos a pensar que no está la frase en favs
 
 void main() async {
   frases.clear();
-  frasesId.clear();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const AppState());
 }
@@ -33,13 +31,21 @@ class AppState extends StatelessWidget {
       providers: [
         //Lista de providers que se van a tener
         ChangeNotifierProvider(
-          //avisa que hay un provider
           create: (_) => FrasesProvider(),
           lazy: false,
         ),
-        ChangeNotifierProvider(create: (context) => AuthService()),
-        ChangeNotifierProvider(create: (context) => LoginF_Provider()),
-        ChangeNotifierProvider(create: (context) => Personajes()),
+        ChangeNotifierProvider(
+          create: (context) => AuthService(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LoginF_Provider(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Personajes(),
+          lazy: false,
+        ),
       ],
       child: const MyApp(),
     );

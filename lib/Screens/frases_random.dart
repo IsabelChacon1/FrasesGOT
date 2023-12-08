@@ -59,19 +59,19 @@ class _FrasesRandomState extends State<FrasesRandom> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           frasesita = fraseProvider.fraseRandom;
-          setState(() {
-            //cambiar cuando la frase esté guardada
-            //todo validar si no está ya la frase guardada con el correo
-            //myCondition = !myCondition;
-            //frasesFavs.versSiyaEsFav();
-          });
-          //print("Agregar la frase ' $frasesita ' a favoritas");
+          setState(() {});
           if (myCondition == false) {
             //no está guardada entonces guardala
             frasesFavs.guardarFrase();
+            AlertDialog(
+              title: Text('Agregamos la frase $frasesita a favoritos'),
+            );
           } else {
             //si está guardada entonces borrala
             frasesFavs.eliminarFrase();
+            AlertDialog(
+              title: Text('Aliminamos la frase $frasesita favoritos'),
+            );
           }
 
           //myCondition ? frasesFavs.guardarFrase() : frasesFavs.eliminarFrase();
@@ -81,7 +81,7 @@ class _FrasesRandomState extends State<FrasesRandom> {
         backgroundColor: const Color.fromARGB(255, 239, 150, 45),
 
         child: Icon(
-          myCondition ? Icons.favorite_rounded : Icons.heart_broken_rounded,
+          myCondition ? Icons.heart_broken_rounded : Icons.favorite_rounded,
           color: const Color.fromARGB(255, 255, 255, 255),
           size: 40,
         ),
