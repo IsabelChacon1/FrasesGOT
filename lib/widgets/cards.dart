@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
 import 'package:frases_got/providers/login_form_provider.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
 import '../providers/frases_provider.dart';
 
@@ -49,7 +48,7 @@ class FrasesxPersonaje extends StatelessWidget {
         ),
         child: _FraseRandom(),
       ),
-      floatingActionButton: Botoncito(),
+      floatingActionButton: const Botoncito(),
     );
   }
 }

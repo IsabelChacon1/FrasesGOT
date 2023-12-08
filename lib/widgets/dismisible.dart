@@ -16,7 +16,6 @@ class _DismisibleState extends State<Dismisible> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     String? fras;
     final frasesFavs = Provider.of<LoginF_Provider>(context);
     final fraseProvider = Provider.of<FrasesProvider>(context);
@@ -43,13 +42,11 @@ class _DismisibleState extends State<Dismisible> {
           },
           child: ListTile(
             title: Text('$fras',
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                     color: Colors.amber)),
-            onTap: () {
-              print(frases[index]);
-            },
+            onTap: () {},
           ),
         );
       },

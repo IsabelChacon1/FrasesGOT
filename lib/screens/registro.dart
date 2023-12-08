@@ -8,10 +8,8 @@ class RegistroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ChangeNotifierProvider(
-            create: (_) => LoginF_Provider(), child: _RegistroPage()),
-      ),
+      body: ChangeNotifierProvider(
+          create: (_) => LoginF_Provider(), child: _RegistroPage()),
     );
   }
 }
@@ -122,7 +120,7 @@ class _RegistroPage extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 TextButton(
                   onPressed: () {
-                    print('no que no');
+                    // print('no que no');
                     Navigator.pushNamed(context, 'login', arguments: '');
                   },
                   child: const Text(
@@ -151,7 +149,7 @@ class _RegistroPage extends StatelessWidget {
                           if (errorMessage == null) {
                             Navigator.pushReplacementNamed(context, 'home');
                           } else {
-                            print(errorMessage);
+                            //  print(errorMessage);
                             loginForm.isLoading = false;
                           }
                         },

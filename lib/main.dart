@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frases_got/providers/frases_provider.dart';
 import 'package:frases_got/providers/perosnajes_prov.dart';
 import 'package:frases_got/screens/frases_favs.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:frases_got/Screens/screens.dart';
 import 'providers/login_form_provider.dart';
@@ -72,11 +71,11 @@ class MyApp extends StatelessWidget {
           'register': (_) => RegistroPage(),
           'checking': (_) => CheckAuthScreen(),
           'home': (_) => const PrincipalScr(),
-          'Frase': (_) => FrasesRandom(),
+          'Frase': (_) => const FrasesRandom(),
           'EscogeCasa': (_) => Escoger_Casa(casitas: frasesProv.casas_GOT),
           'EscogePers': (_) =>
               Escoger_Personaje(personajes: frasesProv.personajes),
-          'FrasesFavs': (_) => FrasesFavsScr(),
+          'FrasesFavs': (_) => const FrasesFavsScr(),
         });
   }
 }

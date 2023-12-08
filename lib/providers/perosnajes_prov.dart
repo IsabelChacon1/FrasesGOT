@@ -19,10 +19,10 @@ class Personajes extends ChangeNotifier {
     try {
       List<Fotito> personajeFotito = await obj.get('fotito');
       personajeFotito.forEach((element) {
-        print(element);
+        //print(element);
       });
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 }

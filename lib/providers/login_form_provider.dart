@@ -20,8 +20,8 @@ class LoginF_Provider extends ChangeNotifier {
   }
 
   bool isValidForm() {
-    print(formKey.currentState?.validate());
-    print('$email - $password');
+    //print(formKey.currentState?.validate());
+    //print('$email - $password');
 
     return formKey.currentState?.validate() ?? false;
   }
@@ -33,8 +33,8 @@ class LoginF_Provider extends ChangeNotifier {
       ..set('frase', frasesita)
       ..set('email', correoF);
     await firstObject.save();
-    print("Agregar la frase ' $frasesita ' a favoritas");
-    print('frase guardada');
+    //   print("Agregar la frase ' $frasesita ' a favoritas");
+    //   print('frase guardada');
   }
 
   void performQuery() async {
@@ -54,18 +54,18 @@ class LoginF_Provider extends ChangeNotifier {
         // Puedes acceder a los datos del objeto
         frase = object.get<String>('frase');
         frases.add(frase);
-        print(object.get<String>('frase'));
+        //print(object.get<String>('frase'));
       }
     } else {
       // Manejo de errores
-      print("Error retrieving data");
+      //print("Error retrieving data");
     }
     notifyListeners();
   }
 
-  ////todo crear metodo para que verifique si ya está guardada la frase
+  //  metodo para que verifique si ya está guardada la frase
   void versSiyaEsFav() async {
-    print('Estamos viendo si está la frase y mi condición es $myCondition');
+    //print('Estamos viendo si está la frase y mi condición es $myCondition');
     await Parse().initialize(
       keyApplicationId,
       keyParseServerUrl,
@@ -82,10 +82,10 @@ class LoginF_Provider extends ChangeNotifier {
         if (frasesEnFavs == frasesita) {
           //frasesId.add(fraseId);
 
-          print(object);
-          print('frase en favsssss: $frasesEnFavs');
-          print('frase para comparar $frasesita');
-          print('frase coincide');
+          // print(object);
+          // print('frase en favsssss: $frasesEnFavs');
+          // print('frase para comparar $frasesita');
+          // print('frase coincide');
           myCondition = true; //si está la frase
           frasesEnFavs = frasesita;
           // return true;
@@ -100,20 +100,20 @@ class LoginF_Provider extends ChangeNotifier {
     } else {
       // Manejo de errores
       // myCondition = false; //no ta la frase
-      print("Error retrieving data");
-      print(apiResponse.error);
-      print(queryBuilder.queries);
+      // print("Error retrieving data");
+      // print(apiResponse.error);
+      // print(queryBuilder.queries);
       //return false;
     }
     notifyListeners();
   }
 
-  //todo crear metodo para borrar las frases
+  // metodo para borrar las frases
   void eliminarFrase() async {
     try {
       //versSiyaEsFav(); // Ejecuta la consulta
-      print(
-          'Estamos viendo si está la frase pa borrarla y mi condición es $myCondition');
+      // print(
+      //   'Estamos viendo si está la frase pa borrarla y mi condición es $myCondition');
       if (myCondition == true) {
         //si está la frase has todo eso
         // ParseObject frasePaBorrar = frasesita as ParseObject;
@@ -122,20 +122,20 @@ class LoginF_Provider extends ChangeNotifier {
             apiResponse.results as List<ParseObject>;
         for (ParseObject frasePaBorrar in phraseToDelete) {
           if (frasePaBorrar.get<String>('frase') == frasesita) {
-            print(frasesEnFavs);
-            print(frasesita);
-            print(frasePaBorrar);
+            // print(frasesEnFavs);
+            //print(frasesita);
+            //print(frasePaBorrar);
             // Si hay coincidencia, elimina ese objeto
             final ParseResponse deleteResponse = await frasePaBorrar.delete();
-            print('Frase eliminada: ${frasePaBorrar.objectId}');
+            //print('Frase eliminada: ${frasePaBorrar.objectId}');
             if (deleteResponse.success) {
-              print('Frase eliminada: $frasesita');
-              print('La frase fue eliminada correctamente. $frasesita');
+              // print('Frase eliminada: $frasesita');
+              //print('La frase fue eliminada correctamente. $frasesita');
               myCondition = false; //frase estaba y ya no está
             } else {
               //   // Manejo de errores de eliminación
-              print(
-                  'No se pudo eliminar la frase: ${deleteResponse.error?.message}');
+              //print(
+              //  'No se pudo eliminar la frase: ${deleteResponse.error?.message}');
             }
           }
 
@@ -144,11 +144,11 @@ class LoginF_Provider extends ChangeNotifier {
       } else {
         //si no ta la frase deme un error
         // Manejo de errores de consulta
-        print('Error de consulta: ${apiResponse.error?.message}, ');
-        print(apiResponse.toString());
+        // print('Error de consulta: ${apiResponse.error?.message}, ');
+        //print(apiResponse.toString());
       }
     } on Exception catch (e) {
-      print('Error al realizar la consulta: $e');
+      //print('Error al realizar la consulta: $e');
     }
     notifyListeners();
   }
