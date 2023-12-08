@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
+import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:frases_got/services/auth_services.dart';
 import 'package:frases_got/widgets/lista.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,7 @@ class PrincipalScr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final frasesFavs = Provider.of<LoginF_Provider>(context);
+    final frasesFavs = Provider.of<LoginF_Provider>(context);
     String elMail = correoF.toString();
     return Scaffold(
       drawer: Drawer(
@@ -75,7 +76,7 @@ class PrincipalScr extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                // preguntar si quieres salir
+                //TODO preguntar si quieres salir
                 frases.clear();
                 Provider.of<AuthService>(context, listen: false).logout();
                 Navigator.pushReplacementNamed(context, 'login');

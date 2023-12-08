@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frases_got/main.dart';
 import 'package:frases_got/providers/frases_provider.dart';
 import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ class Lista extends StatelessWidget {
     final frasesFavs = Provider.of<LoginF_Provider>(context);
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,15 +29,15 @@ class Lista extends StatelessWidget {
                     image: AssetImage('assets/GOT_Logo.png'),
                     fit: BoxFit.contain)),
           ),
-          const SizedBox(height: 50.0),
+          SizedBox(height: 50.0),
           Container(
             width: double.infinity,
             height: size.height * 0.12,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: const Color.fromARGB(255, 239, 150, 45),
-              boxShadow: const [
+              color: Color.fromARGB(255, 239, 150, 45),
+              boxShadow: [
                 BoxShadow(
                     color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
               ],
@@ -57,7 +58,7 @@ class Lista extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 30.0),
+          SizedBox(height: 30.0),
           Container(
             width: double.infinity,
             height: size.height * 0.12,
@@ -65,7 +66,7 @@ class Lista extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: const Color.fromARGB(255, 239, 150, 45),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                     color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
               ],
@@ -85,7 +86,7 @@ class Lista extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: 30.0),
+          SizedBox(height: 30.0),
           Container(
             width: double.infinity,
             height: size.height * 0.12,
@@ -93,7 +94,7 @@ class Lista extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: const Color.fromARGB(255, 239, 150, 45),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                     color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
               ],
@@ -112,11 +113,11 @@ class Lista extends StatelessWidget {
                 fraseProvider.getPersonaje();
                 Navigator.pushNamed(context, 'EscogePers',
                     arguments: fraseProvider.personajes);
-                //print(fraseProvider.personajes);
+                print(fraseProvider.personajes);
               },
             ),
           ),
-          const SizedBox(height: 30.0),
+          SizedBox(height: 30.0),
           Container(
             width: double.infinity,
             height: size.height * 0.12,
@@ -124,7 +125,7 @@ class Lista extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: const Color.fromARGB(255, 239, 150, 45),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                     color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
               ],
@@ -141,8 +142,8 @@ class Lista extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
                 frasesFavs.performQuery();
-                //print('$correoF ');
-                //print('Frases encontradas: $frases');
+                print('$correoF ');
+                print('Frases encontradas: $frases');
               },
             ),
           ),

@@ -19,8 +19,8 @@ class CardSwiper extends StatelessWidget {
           final casitas = casitasGOT[index];
           return GestureDetector(
             onTap: () => {
-              // abrir otra pantalla para que muestre los personajes de la casa y una fotito
-              //print('personajes de la casa ${casitas.slug}'),
+              //todo abrir otra pantalla para que muestre los personajes de la casa y una fotito
+              print('personajes de la casa ${casitas.slug}'),
               //Navigator.pushNamed(context, 'frases', arguments: casitas.slug)
             },
             child: ClipRRect(

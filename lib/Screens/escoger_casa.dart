@@ -11,8 +11,7 @@ class Escoger_Casa extends StatelessWidget {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 156, 85, 24),
         appBar: AppBar(
-          iconTheme:
-              const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+          iconTheme: IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
           elevation: 0,
           title: const Center(
               child: Text(

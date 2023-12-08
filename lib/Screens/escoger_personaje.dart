@@ -38,8 +38,8 @@ class Escoger_Personaje extends StatelessWidget {
                 final item = personajes[index];
                 return InkWell(
                     onTap: () {
-                      //print('Botón presionado');
-                      //print(personajes[index].slug);
+                      print('Botón presionado');
+                      print(personajes[index].slug);
                       slugPers = personajes[index].slug.toString();
                       fraseProvider.getFrasePersonaje(slugPers);
                       Navigator.push(
