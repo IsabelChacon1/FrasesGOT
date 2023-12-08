@@ -89,20 +89,6 @@ class PrincipalScr extends StatelessWidget {
         iconTheme:
             const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
         elevation: 0,
-        actions: [
-          IconButton(
-              //todo agregarlo a la lista de los botones de pantalla
-              onPressed: () {
-                Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
-                frasesFavs.performQuery();
-                print('$correoF ');
-                print('Frases encontradas: $frases');
-              },
-              icon: const Icon(
-                Icons.favorite,
-                color: Color.fromARGB(255, 250, 244, 244),
-              )),
-        ],
         title: const Center(
             child: Text(
           'Frases de Game Of Thrones',

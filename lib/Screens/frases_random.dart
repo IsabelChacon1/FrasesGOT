@@ -1,73 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
 import 'package:frases_got/providers/frases_provider.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:provider/provider.dart';
 
-class FrasesRandom extends StatelessWidget {
-  FrasesRandom({super.key});
+class FrasesRandom extends StatefulWidget {
+  const FrasesRandom({super.key});
 
+  @override
+  State<FrasesRandom> createState() => _FrasesRandomState();
+}
+
+class _FrasesRandomState extends State<FrasesRandom> {
   @override
   Widget build(BuildContext context) {
     final fraseProvider = Provider.of<FrasesProvider>(context);
+    final frasesFavs = Provider.of<LoginF_Provider>(context);
+    frasesita = fraseProvider.fraseRandom;
+    frasesFavs.versSiyaEsFav();
 
     return Scaffold(
-        appBar: AppBar(
-          iconTheme:
-              const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
-          elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: () {
-                fraseProvider.getFraseRandom();
-              },
-              icon: const Icon(
-                Icons.auto_awesome,
-                size: 30,
-                color: Color.fromARGB(255, 250, 244, 244),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.favorite_rounded),
-              onPressed: () async {
-                frasesita = fraseProvider.fraseRandom;
-
-                print("Agregar la frase ' $frasesita ' a favoritas");
-
-                //todo validar si no está ya la frase guardada con el correo
-                //todo pintar el corazón de otro color cuando la frase esté guardada
-                await Parse().initialize(keyApplicationId, keyParseServerUrl,
-                    clientKey: keyClientKey, autoSendSessionId: true);
-                print('Correo $correoF obtenido');
-                var firstObject = ParseObject('frasesFavs')
-                  ..set('frase', frasesita)
-                  ..set('email', correoF);
-                await firstObject.save();
-                print('Frase guardada');
-                //LoginF_Provider().agregarFavorito;
-              },
-            )
-          ],
-          title: const Center(
-              child: Text(
-            'Frase random',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+      appBar: AppBar(
+        iconTheme:
+            const IconThemeData(color: Color.fromARGB(255, 250, 244, 244)),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              fraseProvider.getFraseRandom();
+            },
+            icon: const Icon(
+              Icons.auto_awesome,
+              size: 30,
               color: Color.fromARGB(255, 250, 244, 244),
-              fontSize: 25,
             ),
-            textAlign: TextAlign.center,
-          )),
-          backgroundColor: const Color.fromARGB(255, 239, 150, 45),
-        ),
-        body: const DecoratedBox(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/Frases_Wallpaper.jpg'),
-                fit: BoxFit.cover),
           ),
-          child: _FraseRandom(),
-        ));
+        ],
+        title: const Center(
+            child: Text(
+          'Frase random',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 250, 244, 244),
+            fontSize: 25,
+          ),
+          textAlign: TextAlign.center,
+        )),
+        backgroundColor: const Color.fromARGB(255, 239, 150, 45),
+      ),
+      body: const DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/Frases_Wallpaper.jpg'),
+              fit: BoxFit.cover),
+        ),
+        child: _FraseRandom(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          frasesita = fraseProvider.fraseRandom;
+          setState(() {
+            //cambiar cuando la frase esté guardada
+            //todo validar si no está ya la frase guardada con el correo
+            //myCondition = !myCondition;
+            //frasesFavs.versSiyaEsFav();
+          });
+          //print("Agregar la frase ' $frasesita ' a favoritas");
+          if (myCondition == false) {
+            //no está guardada entonces guardala
+            frasesFavs.guardarFrase();
+          } else {
+            //si está guardada entonces borrala
+            frasesFavs.eliminarFrase();
+          }
+
+          //myCondition ? frasesFavs.guardarFrase() : frasesFavs.eliminarFrase();
+          //LoginF_Provider().agregarFavorito;
+        },
+        //focusColor: myCondition ? Colors.green : Colors.red, // Cambiar el color según la condición
+        backgroundColor: const Color.fromARGB(255, 239, 150, 45),
+
+        child: Icon(
+          myCondition ? Icons.favorite_rounded : Icons.heart_broken_rounded,
+          color: const Color.fromARGB(255, 255, 255, 255),
+          size: 40,
+        ),
+      ),
+    );
   }
 }
 

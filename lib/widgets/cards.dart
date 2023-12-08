@@ -79,7 +79,7 @@ class _FraseRandom extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Center(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         width: size.width * 0.90,
         height: size.height * 0.40,
         alignment: Alignment.center,

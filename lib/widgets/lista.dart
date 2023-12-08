@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frases_got/main.dart';
 import 'package:frases_got/providers/frases_provider.dart';
+import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:provider/provider.dart';
 //import 'package:frases_got/screens/frases_random.dart';
 
@@ -10,6 +12,7 @@ class Lista extends StatelessWidget {
   Widget build(BuildContext context) {
     //agregamos una variable
     final fraseProvider = Provider.of<FrasesProvider>(context);
+    final frasesFavs = Provider.of<LoginF_Provider>(context);
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.all(10.0),
@@ -48,9 +51,9 @@ class Lista extends StatelessWidget {
                   color: Color.fromARGB(255, 250, 244, 244),
                 ),
                 textAlign: TextAlign.center,
-                //icon: Icon(Icons.casino),
               ),
               onTap: () {
+                //frasesFavs.versSiyaEsFav();
                 Navigator.pushNamed(context, 'Frase', arguments: '');
               },
             ),
@@ -111,6 +114,36 @@ class Lista extends StatelessWidget {
                 Navigator.pushNamed(context, 'EscogePers',
                     arguments: fraseProvider.personajes);
                 print(fraseProvider.personajes);
+              },
+            ),
+          ),
+          SizedBox(height: 30.0),
+          Container(
+            width: double.infinity,
+            height: size.height * 0.12,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: const Color.fromARGB(255, 239, 150, 45),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black54, offset: Offset(2, 2), blurRadius: 4)
+              ],
+            ),
+            child: ListTile(
+              title: const Text(
+                'Favoritas',
+                style: TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 250, 244, 244)),
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'FrasesFavs', arguments: '');
+                frasesFavs.performQuery();
+                print('$correoF ');
+                print('Frases encontradas: $frases');
               },
             ),
           ),

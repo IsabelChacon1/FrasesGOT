@@ -13,8 +13,8 @@ class CardSwiper extends StatelessWidget {
     return Swiper(
         itemCount: casitasGOT.length, //cuenta los datos que hay para mostrar
         layout: SwiperLayout.STACK, //FORMA EN QUE SE VEN LAS TARJETAS
-        itemWidth: size.width * 0.6,
-        itemHeight: size.height * 0.6,
+        itemWidth: size.width * 0.7,
+        itemHeight: size.height * 0.5,
         itemBuilder: (_, int index) {
           final casitas = casitasGOT[index];
           return GestureDetector(
@@ -30,8 +30,8 @@ class CardSwiper extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.all(5),
                       child: Container(
-                        width: size.width * 0.5,
-                        height: size.height * 0.4,
+                        width: size.width * 0.7,
+                        height: size.height * 0.45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           gradient: const LinearGradient(

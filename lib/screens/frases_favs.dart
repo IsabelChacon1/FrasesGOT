@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:frases_got/main.dart';
+import 'package:frases_got/providers/frases_provider.dart';
 import 'package:frases_got/providers/login_form_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,9 @@ class _FrasesFavsScrState extends State<FrasesFavsScr> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final frasesFavs = Provider.of<LoginF_Provider>(context);
+    final fraseProvider = Provider.of<FrasesProvider>(context);
+    String? fras;
+
     //frasesFavs.performQuery();
     print(frases.length);
     return Scaffold(
@@ -46,11 +50,12 @@ class _FrasesFavsScrState extends State<FrasesFavsScr> {
             ? Swiper(
                 itemCount:
                     frases.length, //cuenta los datos que hay para mostrar
-                layout: SwiperLayout.STACK, //FORMA EN QUE SE VEN LAS TARJETAS
+                layout: SwiperLayout.TINDER, //FORMA EN QUE SE VEN LAS TARJETAS
                 itemWidth: size.width * 0.6,
                 itemHeight: size.height * 0.4,
                 itemBuilder: (_, int index) {
-                  final fras = frases[index];
+                  //index = index - 1;
+                  fras = frases[index];
                   return GestureDetector(
                     onTap: () => {
                       //print('personajes de la casa ${casitas.slug}'),
@@ -61,7 +66,7 @@ class _FrasesFavsScrState extends State<FrasesFavsScr> {
                       child: Column(children: [
                         Center(
                           child: Container(
-                            width: size.width * 0.7,
+                            width: size.width * 0.9,
                             height: size.height * 0.4,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
@@ -92,17 +97,29 @@ class _FrasesFavsScrState extends State<FrasesFavsScr> {
                     ),
                   );
                 })
-            : const Text('No hay frases para mostrar'),
+            : Center(
+                child: Text(
+                  'No hay frases para mostrar',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 35),
+                ),
+              ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        //TODO comparar la frase de la card con la frase de la base de datos, importante considerar el correo y borrarla, preguntar si ta segur@
-        print('Frases para eliminar: ${frasesFavs.frase}');
-        icon:
-        const Icon(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print("eliminar  ${fras} de favoritas");
+          //frasesFavs.eliminarFrase();
+          //LoginF_Provider().agregarFavorito;
+        },
+
+        child: Icon(
           Icons.heart_broken_rounded,
-          color: Color.fromARGB(255, 250, 244, 244),
-        );
-      }),
+          color: Color.fromARGB(255, 255, 255, 255),
+          size: 40,
+        ),
+        //focusColor: myCondition ? Colors.green : Colors.red, // Cambiar el color según la condición
+        backgroundColor: Color.fromARGB(255, 239, 150, 45),
+      ),
     );
   }
 }

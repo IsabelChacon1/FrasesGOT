@@ -14,14 +14,12 @@ const keyApplicationId = "ycdF0zyXJGzM76ueCjPekx7BkRmAK3xvfi0Az7Jd";
 const keyParseServerUrl = "https://parseapi.back4app.com";
 const keyClientKey = 'JPa3OwmSchmElBlKvYjukkWGnGnIxWXN9z8tWWBk';
 List<String?> frases = [];
+List<String?> frasesId = [];
+bool myCondition = false; //si la frase no está en favs
+
 void main() async {
-  await Parse().initialize(
-    keyApplicationId,
-    keyParseServerUrl,
-    clientKey: keyClientKey,
-    autoSendSessionId: true,
-  );
   frases.clear();
+  frasesId.clear();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const AppState());
 }
