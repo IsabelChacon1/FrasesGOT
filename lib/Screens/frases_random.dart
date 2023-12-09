@@ -28,6 +28,7 @@ class _FrasesRandomState extends State<FrasesRandom> {
           IconButton(
             onPressed: () {
               fraseProvider.getFraseRandom();
+              frasesita = fraseProvider.fraseRandom;
             },
             icon: const Icon(
               Icons.auto_awesome,
@@ -58,8 +59,10 @@ class _FrasesRandomState extends State<FrasesRandom> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          frasesita = fraseProvider.fraseRandom;
-          setState(() {});
+          setState(() {
+            frasesita = fraseProvider.fraseRandom;
+            frasesFavs.versSiyaEsFav();
+          });
           if (myCondition == false) {
             //no está guardada entonces guardala
             frasesFavs.guardarFrase();

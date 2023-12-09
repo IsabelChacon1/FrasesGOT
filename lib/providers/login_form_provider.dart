@@ -63,7 +63,7 @@ class LoginF_Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  ////todo crear metodo para que verifique si ya está guardada la frase
+  //metodo para que verifique si ya está guardada la frase
   void versSiyaEsFav() async {
     print('Estamos viendo si está la frase y mi condición es $myCondition');
     await Parse().initialize(
@@ -89,13 +89,12 @@ class LoginF_Provider extends ChangeNotifier {
           myCondition = true; //si está la frase
           frasesEnFavs = frasesita;
           // return true;
+        } else {
+          myCondition = false;
+          print('frase NO coincideeee');
+          print('frase en favs: $frasesEnFavs');
+          print('frase para comparar $frasesita');
         }
-        // else {
-        //   myCondition = false;
-        //   print('frase NO coincideeee');
-        //   print('frase en favs: $frasesEnFavs');
-        //   print('frase para comparar $frasesita');
-        //}
       }
     } else {
       // Manejo de errores
@@ -108,12 +107,12 @@ class LoginF_Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //todo crear metodo para borrar las frases
+  //metodo para borrar las frases
   void eliminarFrase() async {
     try {
       //versSiyaEsFav(); // Ejecuta la consulta
       print(
-          'Estamos viendo si está la frase pa borrarla y mi condición es $myCondition');
+          'Estamos viendo si está la frase:  $frasesita pa borrarla y mi condición es $myCondition');
       if (myCondition == true) {
         //si está la frase has todo eso
         // ParseObject frasePaBorrar = frasesita as ParseObject;
